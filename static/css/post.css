@@ -1,0 +1,47 @@
+
+
+.form-signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+}
+
+.form-signin .checkbox {
+  font-weight: 400;
+}
+
+.icon {
+  display: flex;
+
+}
+
+
+
+.form-signin .form-floating:focus-within {
+  z-index: 2;
+}
+
+
+
+.form-signin input {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  
+}
+
+.form-signin textarea {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.icon img, svg {
+  margin-left: 20px;
+}
+
+#bgg {
+  background-size:100% ;
+  background-repeat: no-repeat;
+}  

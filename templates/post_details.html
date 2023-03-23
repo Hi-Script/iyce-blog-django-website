@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class= " text-center">
+    <div class="col-12 themed-grid-col">
+        <div>
+            <img class="rounded-circle account-img" src="{{ post.author.profile.image.url }}" width="40" height="35">
+            {{post.author}}
+        </div>
+        <h3>{{ post.title}}</h3>
+        
+        
+         
+        <p>{{ post.body}}</p>
+        {% if post.post_pic %}
+
+        <img src="{{ post.post_pic.url }}" width="380" height="200">
+        
+        {% endif %}
+        <h6>{{ post.created | timesince}}</h6>
+    
+    </div>
+    
+    {% if request.user.is_authenticated %}
+        {% if request.user == post.author %}
+        <div class="col-12 text-center">
+            <a href="{% url 'deletepost' post.id %}"><img class="icons" 
+            src="{% static 'pictures/delete.svg' %}" alt="delete" width="17" height="17" ></a>
+            <a href="{% url 'update' post.id %}"><img class="icons" 
+            src="{% static 'pictures/edit.png' %}" alt="edit" width="17" height="17" style="margin-left: 10px"></a>
+
+        </div>
+        
+        {% endif %}
+
+    {% endif %}
+
+</div>
+<div class="comment text-center">
+    {% if request.user.is_authenticated %}
+        <form action="" method="POST" class="comment">
+            {% csrf_token %}
+            <input type="text" name="comment" placeholder="Type your comments here....">
+            <input type="submit" value="Comment">
+        </form>
+
+    {% endif %}
+</div>    
+<hr />
+<div class="col-12 comment_header " style="margin-left:20px">
+        {% for comment in post.comment_set.all  %}
+        <div>
+            <div class= "d-flex">
+                <img class="rounded-circle account-img" src="{{ comment.author.profile.image.url }}" width="40" height="35">
+                <h6>{{ comment.author}}</h6>
+            </div>
+            <p style="margin-left:40px"> {{ comment.comment}} </p>
+            
+            
+        </div>
+        <div >
+        <p style="margin-right:340px">{{ comment.created | timesince}}</p>
+            
+        {% if request.user == comment.author %}
+        <a href="{% url 'deletecomment' %}"><img class="icons" 
+            src="{% static 'pictures/delete.svg' %}" alt="delete" width="17" height="17" ></a>
+        
+        
+        {% endif %}
+        <hr />
+        {% endfor %}
+
+        </div>
+    
+    </div>
+
+
+{% endblock content  %}

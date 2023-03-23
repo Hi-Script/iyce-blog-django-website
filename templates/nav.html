@@ -1,0 +1,113 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    
+    
+</head>
+<body>
+    
+    <div class="container">
+        <header class="blog-header py-3">
+            <div class="row flex-nowrap justify-content-between align-items-center">
+                <div class="col-3 pt-1">
+                    <a class="blog-header-logo text-dark" href="#">iyce</a>
+                    
+                </div>
+                <div class="col-4 text-center">
+                    <form action="" method="GET" class="search">
+                        <input type="text" name="search"  placeholder="search......">
+                        
+                    </form>
+                    
+                </div>
+                <div class="col-5 d-flex justify-content-end align-items-center">
+                    {% if  request.user.is_authenticated %}
+                    <a href="{% url 'user'%}"><img class="rounded-circle account-img" src="{{ user.profile.image.url }}" width="40" height="35"></a>
+                    {% else %}
+                    <a class="btn btn-sm btn-outline-secondary" href="{% url 'register' %}">Sign up</a>
+                    {% endif %}
+                    
+                    
+                    
+                    
+                </div>
+            </div>
+        </header>
+    </div>    
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12" >
+
+                <div class="nav-scroller py-1 mb-2">
+                    <nav class="nav d-flex justify-content-between">
+                        <a class="p-2 link-secondary" href="{% url 'home' %}" >Home</a>
+                        <a class="p-2 link-secondary" href="#">World</a>
+                        <a class="p-2 link-secondary" href="#">Technology</a>
+                        <a class="p-2 link-secondary" href="#">Design</a>
+                        <a class="p-2 link-secondary" href="#">Culture</a>
+                        <a class="p-2 link-secondary" href="#">Business</a>
+                        <a class="p-2 link-secondary" href="#">Politics</a>
+                        <a class="p-2 link-secondary" href="#">Opinion</a>
+                        <a class="p-2 link-secondary" href="# ">Science</a>
+                        <a class="p-2 link-secondary" href="{% url 'features' %}">Feature Post</a>
+                        <a class="p-2 link-secondary" href="{% url 'user' %}">My Account</a>
+                        <a class="p-2 link-secondary" href="{% url 'newpost' %}">Create Post</a>
+                    </nav>
+                </div>
+            </div>
+        </div> 
+    </div>
+
+    <hr>
+
+    <div class="container">
+        <header class="blog-header py-3">
+            <div class="row flex-nowrap justify-content-between align-items-center">
+                <div class="col-4 pt-1">
+                    <a class="text-dark" href="#">subscribe</a>
+                    
+                </div>
+                {% if request.user.is_authenticated %}
+                    <div class="col-4 text-center">
+                        <h4>Welcome @{{ request.user.username }}</h4>
+                    
+                    </div>
+
+                    <div class="col-4 d-flex justify-content-end align-items-center">
+                    
+                        <a class="logout" href="{% url 'logout' %}">logout</a>
+                    
+                    </div>
+                
+                {% else %}
+                    <div class="col-4 text-center">
+                        <h4>Welcome to iyce</h4>
+                    </div>    
+
+                    <div class="col-4 d-flex justify-content-end align-items-center">
+                    
+                        <a class="login" href="{% url 'login' %}">Sign in</a>
+                    
+                    </div>    
+                    
+                    
+                
+                {% endif %}
+
+                
+                
+            </div>
+        </header>
+    </div>                      
+
+
+    
+</body>
+</html>
+

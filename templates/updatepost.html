@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}{% endblock title %}
+
+{% block content %}
+<main class="form-signin">
+    <form action="" method="POST" enctype= "multipart/form-data">
+        {% csrf_token %}
+        {% if message %}
+        <h2>{{ message }}</h2>
+        {% endif %}
+
+        <!--<img class="mb-4" src="" alt="" width="72" height="57">-->
+        <h1 class="h3 mb-3 fw-normal text-center">Update post</h1><br>
+
+        <div class="form-floating">
+
+            <input type="text"  id="floatingInput" placeholder="Title" name= 'title' value="{{ post.title}}" required >
+      
+        </div><br>
+
+        <div class="form-floating">
+
+            <textarea  cols="40" rows="4"  placeholder="Description::first paragraph from your post" name= 'p-description' required>value="{{ post.description}}"</textarea>
+    
+        </div><br>
+
+        <div class="form-floating">
+            <textarea name="description"  cols="40" rows="8" placeholder="Description" required>{{ post.body}}</textarea><br>
+             
+
+
+        </div>
+        <div class= "pics">
+            <label>Upload image</label>
+            <input type="file" name ="image" class="form-control-file">
+        </div><br>
+        
+
+        
+        <input class="w-100 btn btn-lg btn-primary" type="submit" value = 'update'>
+        <p class="mt-5 mb-3 text-muted text-center">iyce&copy; 2022–2023</p>
+    </form>
+</main>
+
+{% endblock content %}

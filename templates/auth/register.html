@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}{% endblock title %}
+
+{% block content %}
+<div class = "reg text-center">
+    <main class="form-signin">
+        <form action="" method="POST">
+            {% csrf_token %}
+            {% if message %}
+            <h2>{{ message }}</h2>
+            {% endif %}
+
+            
+            <h1 class="h3 mb-3 fw-normal">Please sign up</h1>
+
+            <div class="form-floating">
+                <input type="text" class="form-control" id="floatingInput" placeholder="username" name="username">
+                <label for="floatingInput">username</label>
+            </div>
+
+            <div class="form-floating">
+                <input type="email" class="form-control" id="floatingInput" placeholder="@example.com" name="email">
+                <label for="floatingInput">Email address</label>
+            </div>
+            
+
+            <div class="form-floating">
+                <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password1">
+                <label for="floatingPassword">Password</label>
+            </div>
+
+            <div class="form-floating">
+                <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password2">
+                <label for="floatingPassword">Confirm Password</label>
+            </div>
+
+
+            <button class="w-100 btn btn-lg btn-primary" type="submit">Sign up</button>
+            <p class="mt-5 mb-3 text-muted">&copy; 2017–2021</p>
+        </form>
+    </main>
+
+</div>
+{% endblock content %}

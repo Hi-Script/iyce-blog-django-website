@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}{% endblock title %}
+
+{% block content %}
+    
+    <div class="container-fluid">
+        <div class="row">
+        
+            <main class="col-md-12   " >
+                <div class=" border rounded overflow-hidden  mb-4 shadow-sm  position-relative text-center">
+                    
+                    
+                    <div class="content-section" style="margin-top: 30px">
+                        <div class="media ">
+                            <img class="rounded-circle account-img" src="{{ request.user.profile.image.url }}" width="170" height="150">
+                            <div class="media-body">
+                                <h2 class="account-heading">{{ user.username }}</h2>
+                                <p class="text-secondary">{{ user.email }} </p>
+                                <h1 class="text-secondary">{{ request.user.post_set.all.count }} Total Posts </h1>
+                            </div>
+                        </div>  
+                    </div>
+
+                    <!--form here-->
+                    
+
+                </div>
+
+
+        
+            
+        
+            
+            </main>
+
+            <main class="row">
+                <div class=" col-md-7 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                    {% for post in posts  %}
+    
+                        {% if request.user.is_authenticated %}
+                            {% if request.user == post.author %}
+                            <h3>{{ post.title }}</h3>
+                            <p>{{ post.body}}</p>
+                            <div class = "comment">
+                                <a href="{% url 'detail' post.id %}"><h6> {{ post.comment_set.all.count}} <img class="icons" 
+                                src="{% static 'pictures/icon (1).png' %}" alt="comment" width="17" height="17" > </h6>
+                                </a>
+                
+                
+
+                            </div>
+                            {% endif %}
+                            <hr />
+                            
+                            
+                        {% endif %}
+
+
+                    {% endfor %}
+
+                </div>
+
+                <div class=" col-md-5 ">
+
+                    <div class="comment border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative"
+                     style="width:250px; height:200px; margin-left: 70px">
+                        {% if request.user.is_authenticated %}
+                            {% if request.user.comment == comment.author %}<br>
+                            <center>
+                            <h2>{{ request.user.comment_set.all.count}}</h2> <br> <h5>Total Comments so far</h5></center>
+                            
+                            {% else %}
+                            {% endif %}
+                        {%endif%}
+                        
+                        
+                    </div>
+                
+                </div>
+            </main>
+
+            
+        </div>
+
+    
+    </div>
+    
+    
+
+    
+    <footer class="col-md-12 text-center footer-content">
+    <p class="mt-5 mb-3 text-muted"> iyce&copy; 2023–2023</p>
+    <p class="text-muted">Programmer[HiScript]</p>
+    </footer>
+    
+{% endblock content %}

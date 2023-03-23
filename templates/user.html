@@ -1,0 +1,142 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+       <meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+	    <meta name="description" content="Blog section">
+
+        <!-- title -->
+        <title>{% block title %}{% endblock title %}</title>
+        <!-- css and js linking -->
+        
+	    <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+      <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+      <link rel="stylesheet" type="text/css" href="{% static 'css/user.css' %}">
+	
+    </head>
+
+    <body>
+
+        <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+            <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="{% url 'home' %}">Home</a>
+            <!--<form action="" method="GET" class="search">
+                <input class="form-control form-control-dark w-100" type="text" name="search" placeholder="Search" aria-label="Search">
+        
+            </form>-->
+            <div class="navbar-nav">
+                <div class="nav-item text-nowrap d-flex " style="margin-left:-150px">
+                    <a class="nav-link px-3" href="{% url 'logout' %}">Sign out</a>
+                    <img class="rounded-circle account-img" src="{{ user.profile.image.url }}" width="40" height="35">
+                </div>
+            </div>
+        </header>
+      
+      <div class="container-fluid">
+        <div class="row">
+      
+          <main class="col-md-12   " >
+            <div class=" border rounded overflow-hidden  mb-4 shadow-sm  position-relative text-center">
+             
+              
+              <div class="content-section" style="margin-top: 30px">
+                <div class="media ">
+                  <img class="rounded-circle account-img" src="{{ request.user.profile.image.url }}" width="170" height="150">
+                  <div class="media-body">
+                    <h2 class="account-heading">{{ user.username }}</h2>
+                    <p class="text-secondary">{{ user.email }} </p>
+                  </div>
+                </div>  
+              </div>
+
+              <!--form here-->
+              
+
+            </div>
+
+
+      
+            
+      
+            
+          </main>
+
+          
+        </div>
+
+        <div class="row" style="margin-top:50px">
+          <div class="row mb-2 ">
+            <div class="col-md-4" id="mac">
+              <div>
+                <center><div class="card border-rounded overflow-hidden text-center"><br>
+                  <center><a href="{% url 'account' %}"><img class="sett" 
+                  src="{% static 'pictures/iconsc.png' %}" alt="account-setting" width="130" height="130" ></center><br>
+                  <h5 style="color: white"> Account Settings</h5></a>
+                </div></center>
+              </div>
+            </div>
+            
+      
+            <div class="col-md-4">
+              <div>
+                <center><div class="card border-rounded overflow-hidden text-center"><br>
+                  <center><a href="{% url 'userposts' %}"><img class="sett" 
+                  src="{% static 'pictures/icons-02.png' %}" alt="total-posts" width="130" height="130" ></center><br>
+                  <h5 style="color: white">{{request.user.post_set.all.count}} Total Posts</h5></a>
+                </div></center>
+                
+              </div>  
+            </div>
+
+            <div class="col-md-4">
+                <center><div class="card border-rounded overflow-hidden text-center"><br>
+                  <center><a href="{% url 'newpost' %}"><img class="sett" 
+                  src="{% static 'pictures/icons-06.png' %}" alt="create-post" width="130" height="130" ></center><br>
+                  <h5 style="color: white"> Create new post</h5></a>
+                </div></center>
+            </div>
+
+          </div>
+        </div>
+        
+        {% if request.user.is_authenticated %}
+          {% if request.user.profile == admin %}
+            <div class="row" style="margin-top:50px">
+              <div class="row mb-2 ">
+                <div class="col-md-4" id="mac">
+                  <div>
+                    <center><div class="card border-rounded overflow-hidden text-center"><br>
+                      <center><a href="{% url 'features' %}"><img class="sett" 
+                      src="{% static 'pictures/iconsc.png' %}" alt="account-setting" width="130" height="130" ></center><br>
+                      <h5 style="color: white"> Create Feature Post</h5></a>
+                    </div></center>
+                  </div>
+                </div>
+                
+          
+
+
+                
+              </div>
+            </div>
+              
+          
+          {% endif %}
+        
+        
+        {% endif %}
+        
+
+        
+      <footer class="col-md-12 text-center footer-content">
+        <p class="mt-5 mb-3 text-muted"> iyce&copy; 2023–2023</p>
+        <p class="text-muted">[HiScript]</p>
+      </footer>
+       
+       <script type="text/javascript" src="{% static 'javascript/' %}"></script>
+       <script type="text/javascript" src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+        
+    </body>
+</html>
+
+

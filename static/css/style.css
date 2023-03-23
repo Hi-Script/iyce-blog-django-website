@@ -1,0 +1,68 @@
+.navbarnav {
+    list-style: none; display: flex;
+}
+
+.h2, h2 {
+    text-decoration: none;
+    color: orangered;
+}
+
+a {
+    text-decoration: none;
+}
+
+#stick {
+    background-color: orangered;
+}
+
+#arc, #else {
+    background-color: white;
+
+}
+
+.icon img {
+    display: flex;
+    margin-right: 20px;
+  }
+
+.themed-grid-col {
+    padding-top: .75rem;
+    padding-bottom: .75rem;
+    background-color: rgba(86, 61, 124, .15);
+    border: 1px solid rgba(86, 61, 124, .2);
+  }
+  
+  .themed-container {
+    padding: .75rem;
+    margin-bottom: 1.5rem;
+    background-color: rgba(0, 123, 255, .15);
+    border: 1px solid rgba(0, 123, 255, .2);
+  }
+  
+  .icon img, svg {
+    margin-left: 20px;
+  }
+
+  
+
+  .card {
+    width: 200px;
+    height: 200px;
+    background-color: orangered;
+    margin-top: 20px;
+  
+   }
+
+
+.search input{
+  width: 130px;
+  background-color: rgb(211, 198, 193);
+}   
+   
+
+
+
+#bgg {
+  background-size:100% ;
+  background-repeat: no-repeat;
+}  
